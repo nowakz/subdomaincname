@@ -18,6 +18,10 @@ if [[ $6 == "" ]];then
 
 		echo -e "\n\033[0;31m[\033[1;37m*\033[0;31m]\033[1;37m BRUTEFORCING \033[0;31m[\033[1;37m*\033[0;31m]\n"
 		ffuf -u http://FUZZ.$1 -w $2 -s >> domains
+		
+	        echo -e "\033[1;37m"
+                for l in $(cat domains);do echo -e "$l.$1";done; printf '\n';
+
 
 		echo -e "\033[0;31mTrying Resolver CNAMES\033[1;37m\n"
 
@@ -36,6 +40,9 @@ if [[ $6 == "" ]];then
 		echo -e "\n\033[0;31m[\033[1;37m*\033[0;31m]\033[1;37m BRUTEFORCING \033[0;31m[\033[1;37m*\033[0;31m]\n"
                 ffuf -u https://FUZZ.$1 -w $2 -s >> domains
 
+	        echo -e "\033[1;37m"
+                for l in $(cat domains);do echo -e "$l.$1";done; printf '\n';
+
                 echo -e "\033[0;31mTrying Resolver CNAMES\033[1;37m\n"
 
                 for domains in $(cat domains);do
@@ -52,6 +59,9 @@ if [[ $6 != "" ]];then
 
 		echo -e "\n\033[0;31m[\033[1;37m*\033[0;31m]\033[1;37m BRUTEFORCING \033[0;31m[\033[1;37m*\033[0;31m]\n"
                 ffuf -u http://FUZZ.$1 -w $2 -t $6 -s >> domains
+		
+	        echo -e "\033[1;37m"
+                for l in $(cat domains);do echo -e "$l.$1";done; printf '\n';
 
                 echo -e "\033[0;31mTrying Resolver CNAMES\033[1;37m\n"
 
@@ -69,7 +79,10 @@ if [[ $6 != "" ]];then
 
 		echo -e "\n\033[0;31m[\033[1;37m*\033[0;31m]\033[1;37m BRUTEFORCING \033[0;31m[\033[1;37m*\033[0;31m]\n"
                 ffuf -u https://FUZZ.$1 -w $2 -s >> domains
-
+		
+		echo -e "\033[1;37m"
+                for l in $(cat domains);do echo -e "$l.$1";done; printf '\n';
+		
                 echo -e "\033[0;31mTrying Resolver CNAMES\033[1;37m\n"
 
                 for domains in $(cat domains);do
